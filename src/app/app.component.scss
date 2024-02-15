@@ -11,10 +11,14 @@
   &::before {
     content: "";
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 100%;
     height: 100%;
     z-index: -1;
+  }
+
+  @media (max-width: 640px) {
+    height: 100vh;
   }
 }
 
@@ -23,12 +27,15 @@
   position: relative;
   top: -90px;
   z-index: 1;
-  //background-image: url("../assets/images/13338.jpg");
   background: white;
   flex: 1 0 auto;
 
   @media (max-width: 640px) {
     top: 0;
     height: auto;
+  }
+
+  input, select {
+    outline: none !important;
   }
 }
