@@ -1,0 +1,110 @@
+<div class="p-4">
+  <div class="mb-4 flex justify-end">
+    <button
+      class="bg-gray-950 rounded-lg p-3 px-5 tracking-wide font-light text-sm text-white flex items-center gap-2"
+      (click)="addRate()"
+    >
+      <mat-icon>add</mat-icon>
+      <span>Додати нову валюту</span>
+    </button>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="rates" matSort>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Назва</th>
+        <td mat-cell *matCellDef="let row">
+          <b>{{ row.name }}</b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Код</th>
+        <td mat-cell *matCellDef="let row">
+          <b>{{ row.code }}</b>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Купівля</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="flex items-center">
+            <b>{{ row.buy }}</b>
+            <img
+              *ngIf="row.buyStatus"
+              width="24"
+              src="{{ 'assets/images/' + row.buyStatus + '.svg' }}"
+            />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sell">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Продаж</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="flex items-center">
+            <b>{{ row.sell }}</b>
+            <img
+              *ngIf="row.sellStatus"
+              width="24"
+              src="{{ 'assets/images/' + row.sellStatus + '.svg' }}"
+            />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="wholesaleBuy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Купівля (опт)</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="flex items-center">
+            <b>{{ row.wholesaleBuy }}</b>
+            <img
+              *ngIf="row.wholesaleBuyStatus"
+              width="24"
+              src="{{ 'assets/images/' + row.wholesaleBuyStatus + '.svg' }}"
+            />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="wholesaleSell">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Продаж (опт)</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="flex items-center">
+            <b>{{ row.wholesaleSell }}</b>
+            <img
+              *ngIf="row.wholesaleSellStatus"
+              width="24"
+              src="{{ 'assets/images/' + row.wholesaleSellStatus + '.svg' }}"
+            />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button color="primary" (click)="editRate(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="deleteRate(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+    ></mat-paginator>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a mat-button color="accent" routerLink="/">Повернутися на сайт</a>
+  </div>
+</div>

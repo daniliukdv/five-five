@@ -1,0 +1,76 @@
+<div class="flex flex-col gap-4">
+  <div class="flex gap-2 pb-2 border-b border-yellow-300 w-full">
+    <div class="text-left font-medium text-sm tracking-wide grow">
+      Валюта до гривні
+    </div>
+
+    <div class="text-left font-medium text-sm tracking-wide w-[75px]">
+      Купівля
+    </div>
+
+    <div class="text-left font-medium text-sm tracking-wide w-[75px]">
+      Продаж
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-2 w-full">
+    <div *ngFor="let rate of rates" class="w-full flex items-center gap-2 pb-2">
+      <div
+        class="grow flex items-center font-bold text-xl gap-1 max-sm:text-sm"
+      >
+        <img
+          [src]="'assets/images/rates/' + rate.code + '.png'"
+          [alt]="rate.code + 'Image'"
+          width="24"
+          height="20"
+        />
+
+        <div>
+          {{ rate.name }},
+          <span class="uppercase">{{ rate.code }}</span>
+        </div>
+      </div>
+
+      <div
+        class="w-[75px] flex items-center gap-1 text-lg justify-end"
+        *ngIf="{
+          value: showWholesale ? rate.wholesaleBuy : rate.buy,
+          status: showWholesale ? rate.wholesaleBuyStatus : rate.buyStatus
+        } as data"
+      >
+        <span>{{ data.value }}</span>
+        <img
+          *ngIf="data.status"
+          width="24"
+          src="{{ 'assets/images/' + data.status + '.svg' }}"
+        />
+      </div>
+
+      <div
+        class="flex items-center w-[75px] gap-1 text-lg justify-end"
+        *ngIf="{
+          value: showWholesale ? rate.wholesaleSell : rate.sell,
+          status: showWholesale ? rate.wholesaleSellStatus : rate.sellStatus
+        } as data"
+      >
+        <span>{{ data.value }}</span>
+        <img
+          *ngIf="data.status"
+          width="24"
+          src="{{ 'assets/images/' + data.status + '.svg' }}"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="text-right">
+    <mat-slide-toggle
+      color="info"
+      labelPosition="before"
+      [(ngModel)]="showWholesale"
+      class="five-five-toggle-button"
+    >
+      <span class="text-white mr-2">Показати оптовий курс</span>
+    </mat-slide-toggle>
+  </div>
+</div>

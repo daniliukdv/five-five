@@ -1,0 +1,28 @@
+:host {
+  &::ng-deep {
+    .five-five-toggle-button {
+      .mdc-switch .mdc-switch__track {
+        height: 20px;
+        border-radius: 9999px;
+
+        .mdc-switch__track::before {
+          background: rgb(229, 231, 235);
+        }
+      }
+
+      .mat-mdc-slide-toggle .mdc-switch__handle:has(.mdc-switch__icons) {
+        width: 17px !important;
+        height: 17px !important;
+      }
+
+      .mdc-elevation-overlay {
+        background: #ffffff;
+        box-shadow: none !important;
+      }
+
+      .mdc-switch__icons {
+        display: none !important;
+      }
+    }
+  }
+}

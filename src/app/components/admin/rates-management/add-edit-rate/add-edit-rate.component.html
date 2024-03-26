@@ -1,0 +1,128 @@
+<div class="flex items-center justify-between mb-4">
+  <h1 class="text-xl tracking-tighter" *ngIf="data">Редагувати валюту</h1>
+  <h1 class="text-xl tracking-tighter" *ngIf="!data">Додати валюту</h1>
+
+  <button mat-icon-button [mat-dialog-close]="true">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<form class="flex flex-col gap-4" [formGroup]="rateForm">
+  <div class="max-sm:w-full">
+    <label for="name" class="block text-sm font-medium tracking-wide">
+      Назва валюти
+    </label>
+
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input
+        name="name"
+        id="name"
+        class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+        placeholder="Назва валюти"
+        formControlName="name"
+      />
+    </div>
+  </div>
+
+  <div class="max-sm:w-full">
+    <label for="code" class="block text-sm font-medium tracking-wide">
+      Код валюти
+    </label>
+
+    <div class="relative mt-2 rounded-md shadow-sm">
+      <input
+        name="code"
+        id="code"
+        class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+        placeholder="Наприклад, USD/EUR/PLN"
+        formControlName="code"
+      />
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="max-sm:w-full">
+      <label for="buy" class="block text-sm font-medium tracking-wide">
+        Купівля
+      </label>
+
+      <div class="relative mt-2 rounded-md shadow-sm">
+        <input
+          type="number"
+          name="buy"
+          id="buy"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="0.00"
+          formControlName="buy"
+        />
+      </div>
+    </div>
+
+    <div class="max-sm:w-full">
+      <label for="sell" class="block text-sm font-medium tracking-wide">
+        Продаж
+      </label>
+
+      <div class="relative mt-2 rounded-md shadow-sm">
+        <input
+          type="number"
+          name="sell"
+          id="sell"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="0.00"
+          formControlName="sell"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <div class="max-sm:w-full">
+      <label for="wholesaleBuy" class="block text-sm font-medium tracking-wide">
+        Купівля <span class="text-xs text-gray-500">(Опт)</span>
+      </label>
+
+      <div class="relative mt-2 rounded-md shadow-sm">
+        <input
+          type="number"
+          name="wholesaleBuy"
+          id="wholesaleBuy"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="0.00"
+          formControlName="wholesaleBuy"
+        />
+      </div>
+    </div>
+
+    <div class="max-sm:w-full">
+      <label
+        for="wholesaleSell"
+        class="block text-sm font-medium tracking-wide"
+      >
+        Продаж <span class="text-xs text-gray-500">(Опт)</span>
+      </label>
+
+      <div class="relative mt-2 rounded-md shadow-sm">
+        <input
+          type="number"
+          name="wholesaleSell"
+          id="wholesaleSell"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="0.00"
+          formControlName="wholesaleSell"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-end">
+    <button
+      type="button"
+      class="bg-gray-950 rounded-lg p-3 px-5 tracking-wide font-light text-sm text-white"
+      (click)="dialog.close(rateForm.value)"
+      [disabled]="rateForm.invalid"
+    >
+      {{ data ? "Редагувати" : "Додати" }}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,94 @@
+<div class="w-full flex items-center justify-between pb-4">
+  <div class="text-xl tracking-wide">
+    Створити заявку
+
+    <ng-container *ngIf="data">
+      <br />
+
+      <div class="mt-2 text-sm text-gray-700">
+        <b>{{ data.buyAmount }}</b> {{ data.buyCurrency.name }},
+        <span class="uppercase">{{ data.buyCurrency.code }}</span>
+        ==>
+        <b>{{ data.sellAmount }}</b> {{ data.sellCurrency.name }},
+        <span class="uppercase">{{ data.sellCurrency.code }}</span>
+      </div>
+    </ng-container>
+  </div>
+
+  <button (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div mat-dialog-content>
+  <form class="p-4">
+    <div class="flex items-center mt-4 gap-4 max-sm:flex-col">
+      <div class="w-full">
+        <label for="name" class="block text-sm font-medium tracking-wide mb-2">
+          Ваше Імʼя*
+        </label>
+
+        <input
+          type="text"
+          name="text"
+          id="name"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="Імʼя"
+          [(ngModel)]="applicationForm.name"
+        />
+      </div>
+
+      <div class="w-full">
+        <label for="tel" class="block text-sm font-medium tracking-wide mb-2">
+          Ваш Телефон*
+        </label>
+
+        <input
+          type="tel"
+          name="text"
+          id="tel"
+          class="block w-full rounded-md border text-sm py-3 pl-2 pr-20 text-gray-900 border-gray-300 placeholder:text-gray-400 outline-yellow-300"
+          placeholder="Телефон"
+          [(ngModel)]="applicationForm.tel"
+        />
+      </div>
+    </div>
+  </form>
+
+  <div
+    class="mt-3 text-xs text-gray-400 flex items-center gap-2 leading-none max-sm:w-full"
+    *ngIf="!data"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="#fddf47"
+      class="w-[24px] h-[24px] basis-[30px]"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+      />
+    </svg>
+
+    <div class="text-left">
+      Вкажіть Ваші імʼя та телефон. <br />
+      Ми вам зателенофонуємо протягом 5 хвилин для пітдвердження та уточнення деталей.
+    </div>
+  </div>
+
+  <div class="mt-4 w-full flex justify-end">
+    <button
+      type="button"
+      class="bg-gray-950 rounded-lg p-3 px-5 tracking-wide font-light text-sm text-white flex items-center gap-2"
+      (click)="createApplication()"
+      [disabled]="!applicationForm.name || !applicationForm.tel || loading"
+    >
+      <span>Залишити заявку</span>
+      <mat-spinner *ngIf="loading" diameter="20"></mat-spinner>
+    </button>
+  </div>
+</div>

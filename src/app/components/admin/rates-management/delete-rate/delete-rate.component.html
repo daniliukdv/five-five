@@ -1,0 +1,53 @@
+<div class="flex justify-end">
+  <button mat-icon-button (click)="dialog.close(false)">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div class="my-4 flex flex-col gap-4">
+  <div class="text-xl font-medium text-center">
+    Ви дійсно хочете видалити
+    <span class="font-bold underline">{{ data.name }}</span
+    >?
+  </div>
+
+  <div class="flex items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="#fddf47"
+      class="w-[24px] h-[24px] basis-[48px]"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
+      />
+    </svg>
+
+    <div class="text-sm">
+      Ця валюта буде видалена із системи
+      <span class="italic font-bold">без можливості повернення</span>.
+      <br />
+      Ви завжди можете створити нову валюту натиснувши кнопку
+      <b>"Додати нову валюту".</b>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-end items-center gap-4">
+  <button type="button" mat-stroked-button (click)="dialog.close(false)">
+    Відміна
+  </button>
+
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    (click)="dialog.close(true)"
+  >
+    Так
+  </button>
+</div>

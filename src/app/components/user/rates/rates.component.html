@@ -1,0 +1,27 @@
+<div class="flex items-center h-full">
+  <div
+    class="flex w-full justify-between items-start gap-6 max-sm:flex-wrap max-sm:gap-20"
+  >
+    <div
+      class="w-1/2 text-left text-white flex flex-col items-start pr-4 gap-5 max-sm:w-full"
+    >
+      <h1 class="text-4xl tracking-wider font-medium max-sm:text-3xl">
+        Обмін Валют 5/5, <br />
+        обмінник, якому можна довіряти
+      </h1>
+
+      <p class="text-lg font-thin">Швидко, надійно, вигідно.</p>
+
+      <button
+        class="bg-yellow-300 rounded-lg p-3 px-5 tracking-wide font-light text-sm text-black"
+        (click)="createApplication()"
+      >
+        Залишити заявку
+      </button>
+    </div>
+
+    <div class="w-1/2 text-white rounded max-sm:w-full">
+      <app-rates-table></app-rates-table>
+    </div>
+  </div>
+</div>
